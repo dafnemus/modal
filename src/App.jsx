@@ -1,15 +1,21 @@
 import { useState } from "react";
 import "./App.css";
+import Modal from "./components/Modal";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [modal, setModal] = useState(false);
+  const openModal = () => setModal(true);
 
+  const closeModal = () => setModal(false);
   return (
-    <>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-    </>
+    <main>
+      <h1>Modal:</h1>
+      {modal ? (
+        <Modal onClick={closeModal} />
+      ) : (
+        <button onClick={openModal}>open</button>
+      )}
+    </main>
   );
 }
 
